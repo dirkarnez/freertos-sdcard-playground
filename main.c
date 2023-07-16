@@ -42,3 +42,31 @@ void app_main() {
     xTaskCreate(read_file, "file1_task", 4096, (void *)FILE1, 5, NULL);
     xTaskCreate(read_file, "file2_task", 4096, (void *)FILE2, 5, NULL);
 }
+
+
+
+/*
+
+#include <stdio.h>
+#include "esp_err.h"
+#include "esp_log.h"
+#include "esp_vfs_fat.h"
+
+#define FILENAME "/sdcard/test.txt"
+
+void read_file() {
+    FILE* f = fopen(FILENAME, "r");
+    if (f == NULL) {
+        ESP_LOGE(TAG, "Failed to open file for reading");
+        return;
+    }
+
+    char buf[1024];
+    while (fgets(buf, sizeof(buf), f) != NULL) {
+        printf("%s", buf);
+    }
+
+    fclose(f);
+}
+
+*/
